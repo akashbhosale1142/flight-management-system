@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LoginModel } from '../models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginData = {
-    email: '',
-    password: '',
-  };
+  loginData: LoginModel = new LoginModel();
 
   onLogin(loginForm: NgForm): void {
     if (loginForm.valid) {
