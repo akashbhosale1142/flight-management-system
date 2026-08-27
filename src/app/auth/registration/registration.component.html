@@ -1,0 +1,84 @@
+<div class="registration-container">
+  <div class="registration-card">
+    <h2>Flight Management System</h2>
+    <h3>registration</h3>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+      <div class="form-input">
+        <label for="fullName">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Enter the full name"
+          [(ngModel)]="registrationData.fullName"
+          #fullName="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-input">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          [(ngModel)]="registrationData.email"
+          #email="ngModel"
+          ngModel
+          required
+          email
+        />
+      </div>
+      <div class="form-input">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          placeholder="Enter your phone number"
+          [(ngModel)]="registrationData.phone"
+          #phone="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+          [(ngModel)]="registrationData.password"
+          #password="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-input">
+        <label for="confirmPassword">Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="Confirm your password"
+          [(ngModel)]="registrationData.confirmPassword"
+          #conformPassword="ngModel"
+          ngModel
+          required
+        />
+        <span
+          *ngIf="registrationData.password !== registrationData.confirmPassword"
+        >
+          <small>Passwords do not match</small>
+        </span>
+      </div>
+      <button type="submit" [disabled]="registrationForm.invalid">
+        Register
+      </button>
+    </form>
+    <br />
+    <a routerLink="/login"> Already have an account? Login </a>
+  </div>
+</div>

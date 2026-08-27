@@ -1,0 +1,68 @@
+.registration-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.registration-card {
+  width: 450px;
+  padding: 35px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.registration-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registration-card h3 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-input {
+  margin-bottom: 18px;
+}
+
+.form-input label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(209, 208, 207);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-input input:focus {
+  border-color: #007bff;
+}
+
+.form-input small {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: darkgrey;
+  cursor: not-allowed;
+}
