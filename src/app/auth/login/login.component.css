@@ -72,3 +72,9 @@ button:disabled {
 button:active {
   background-color: #5d99db;
 }
+
+.form-input small {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}

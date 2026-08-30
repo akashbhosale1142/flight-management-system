@@ -28,6 +28,11 @@
   margin-bottom: 18px;
 }
 
+.form-input input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
 .form-input label {
   margin-bottom: 6px;
   font-weight: 500;
