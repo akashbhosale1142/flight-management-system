@@ -10,15 +10,17 @@ import { RegistrationModel } from '../models/registration.model';
 export class RegistrationComponent {
   registrationData: RegistrationModel = new RegistrationModel();
 
-  onSubmit(registationForm: NgForm): void {
-    if (registationForm.valid) {
-      if (
-        this.registrationData.password !== this.registrationData.confirmPassword
-      ) {
-        console.log('Password do not match');
-        return;
-      }
+  validateForm(registrationForm: NgForm): boolean {
+    if (registrationForm.invalid) {
+      return false;
     }
-    console.log('registration Data: ', this.registrationData);
+
+    return true;
+  }
+
+  onSubmit(registrationForm: NgForm): void {
+    if (!this.validateForm(registrationForm)) {
+      return;
+    }
   }
 }
