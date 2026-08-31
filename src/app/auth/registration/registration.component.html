@@ -30,11 +30,12 @@
           #email="ngModel"
           ngModel
           required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
           email
         />
         <div *ngIf="email.invalid && email.touched">
           <small *ngIf="email.errors?.['required']">Email is required</small>
-          <small *ngIf="email.errors?.['email']"
+          <small *ngIf="email.errors?.['email'] || email.errors?.['pattern']"
             >please enter a valid email</small
           >
         </div>
@@ -71,6 +72,7 @@
           [(ngModel)]="registrationData.password"
           #password="ngModel"
           ngModel
+          minlength="6"
           required
         />
         <div *ngIf="password.invalid && password.touched">
