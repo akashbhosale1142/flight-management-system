@@ -1,0 +1,34 @@
+<div class="flight-list">
+  <h2>Available Flights</h2>
+
+  <div class="flight-card" *ngFor="let flight of flights">
+    <div class="flight-header">
+      <h3>{{ flight.flight_number }}</h3>
+      <span>{{ flight.status }}</span>
+    </div>
+
+    <div class="flight-route">
+      <div>
+        <h4>Departure</h4>
+        <p>Airport {{ flight.departure_airport_id }}</p>
+        <p>{{ flight.departure_time }}</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div>
+        <h4>Arrival</h4>
+        <p>Airport {{ flight.arrival_airport_id }}</p>
+        <p>{{ flight.arrival_time }}</p>
+      </div>
+    </div>
+
+    <div class="flight-footer">
+      <span>Base Price: ₹{{ flight.base_price }}</span>
+
+      <button type="button" (click)="viewFlightDetails(flight)">
+        View Details
+      </button>
+    </div>
+  </div>
+</div>

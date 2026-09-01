@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FlightListComponent } from './flight/components/flight-list/flight-list.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent,
+  },
+  {
+    path: 'flight',
+    component: FlightListComponent,
   },
   {
     path: '',
