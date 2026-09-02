@@ -10,8 +10,17 @@ import { FlightService } from '../../services/flight.service';
 export class FlightListComponent {
   flights: FlightModel[] = [];
 
-  constructor(private flightService: FlightService) {
-    this.flights = this.flightService.getFlights();
+  constructor(private flightService: FlightService) {}
+
+  ngOnInit(): void {
+    this.flightService.getFlights().subscribe({
+      next: (res) => {
+        this.flights = res;
+      },
+      error: (error) => {
+        console.log('Error while loading flight', error);
+      },
+    });
   }
 
   viewFlightDetails(flight: FlightModel) {
