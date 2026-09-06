@@ -1,6 +1,10 @@
 <h2>Flight List</h2>
 
-<div *ngFor="let flight of flights">
-  <app-flight-card [flight]="flight" (viewDetails)="viewFlightDetails($event)">
+<div class="flight-list">
+  <app-flight-card
+    *ngFor="let flight of flights"
+    [flight]="flight"
+    (viewDetails)="viewFlightDetails($event)"
+  >
   </app-flight-card>
 </div>

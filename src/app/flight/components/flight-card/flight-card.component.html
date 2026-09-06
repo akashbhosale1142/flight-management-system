@@ -1,15 +1,39 @@
 <div class="flight-card">
-  <div class="flight-header">
-    <h3>{{ flight.flight_number }}</h3>
+  <div class="flight-card-header">
+    <div>
+      <span class="flight-label">Flight</span>
+      <h3>{{ flight.flight_number }}</h3>
+    </div>
+
     <span class="status">{{ flight.status }}</span>
   </div>
 
-  <div class="flight-info">
-    <p>
-      <strong>Price:</strong>
-      ₹{{ flight.base_price }}
-    </p>
+  <div class="flight-route">
+    <div class="airport">
+      <span class="airport-code">
+        {{ flight.departure_airport_id }}
+      </span>
+      <span class="airport-label">Departure</span>
+    </div>
+
+    <div class="route-line">
+      <span>✈</span>
+    </div>
+
+    <div class="airport">
+      <span class="airport-code">
+        {{ flight.arrival_airport_id }}
+      </span>
+      <span class="airport-label">Arrival</span>
+    </div>
   </div>
 
-  <button class="details-btn" (click)="onViewDetails()">View Details</button>
+  <div class="flight-card-footer">
+    <div class="price">
+      <span>Starting from</span>
+      <strong>₹{{ flight.base_price }}</strong>
+    </div>
+
+    <button class="details-btn" (click)="onViewDetails()">View Details</button>
+  </div>
 </div>
