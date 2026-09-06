@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FlightModel } from '../../models/flight.model';
 import { FlightService } from '../../services/flight.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight-list',
@@ -10,7 +11,10 @@ import { FlightService } from '../../services/flight.service';
 export class FlightListComponent {
   flights: FlightModel[] = [];
 
-  constructor(private flightService: FlightService) {}
+  constructor(
+    private flightService: FlightService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.flightService.getFlights().subscribe({
@@ -23,7 +27,7 @@ export class FlightListComponent {
     });
   }
 
-  viewFlightDetails(flight: FlightModel) {
-    console.log(flight);
+  viewFlightDetails(flight: FlightModel): void {
+    this.router.navigate(['/flights', flight.flight_id]);
   }
 }

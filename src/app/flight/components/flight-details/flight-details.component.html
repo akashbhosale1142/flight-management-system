@@ -1,0 +1,50 @@
+<div class="details-container" *ngIf="flight">
+  <div class="details-card">
+    <div class="details-header">
+      <h2>Flight Details</h2>
+      <span class="status">{{ flight.status }}</span>
+    </div>
+
+    <div class="flight-number">
+      <span>Flight Number</span>
+      <strong>{{ flight.flight_number }}</strong>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-item">
+        <span>Airline ID</span>
+        <strong>{{ flight.airline_id }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Aircraft ID</span>
+        <strong>{{ flight.aircraft_id }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Departure Airport</span>
+        <strong>{{ flight.departure_airport_id }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Arrival Airport</span>
+        <strong>{{ flight.arrival_airport_id }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Departure Time</span>
+        <strong>{{ flight.departure_time }}</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Arrival Time</span>
+        <strong>{{ flight.arrival_time }}</strong>
+      </div>
+    </div>
+
+    <div class="price">
+      <span>Base Price</span>
+      <strong>₹{{ flight.base_price }}</strong>
+    </div>
+  </div>
+</div>

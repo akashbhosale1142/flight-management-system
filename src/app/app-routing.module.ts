@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FlightListComponent } from './flight/components/flight-list/flight-list.component';
+import { FlightDetailsComponent } from './flight/components/flight-details/flight-details.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'flights',
+    loadChildren: () =>
+      import('./flight/flight.module').then((m) => m.FlightModule),
   },
   {
     path: '**',
