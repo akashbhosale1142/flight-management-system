@@ -23,12 +23,18 @@
 
       <div class="detail-item">
         <span>Departure Airport</span>
-        <strong>{{ flight.departure_airport_id }}</strong>
+        <strong>
+          {{ departureAirport?.airport_name }}
+          ({{ departureAirport?.airport_code }})
+        </strong>
       </div>
 
       <div class="detail-item">
         <span>Arrival Airport</span>
-        <strong>{{ flight.arrival_airport_id }}</strong>
+        <strong>
+          {{ arrivalAirport?.airport_name }}
+          ({{ arrivalAirport?.airport_code }})
+        </strong>
       </div>
 
       <div class="detail-item">
