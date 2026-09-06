@@ -11,7 +11,7 @@
   <div class="flight-route">
     <div class="airport">
       <span class="airport-code">
-        {{ flight.departure_airport_id }}
+        {{ getAirportCode(flight.departure_airport_id) }}
       </span>
       <span class="airport-label">Departure</span>
     </div>
@@ -22,7 +22,7 @@
 
     <div class="airport">
       <span class="airport-code">
-        {{ flight.arrival_airport_id }}
+        {{ getAirportCode(flight.arrival_airport_id) }}
       </span>
       <span class="airport-label">Arrival</span>
     </div>

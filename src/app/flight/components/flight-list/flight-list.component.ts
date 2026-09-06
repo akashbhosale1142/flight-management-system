@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FlightModel } from '../../models/flight.model';
 import { FlightService } from '../../services/flight.service';
 import { Router } from '@angular/router';
+import { AirportModel } from '../../models/airport.model';
+import { AirportService } from '../../services/airport.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -10,9 +12,11 @@ import { Router } from '@angular/router';
 })
 export class FlightListComponent {
   flights: FlightModel[] = [];
+  airports: AirportModel[] = [];
 
   constructor(
     private flightService: FlightService,
+    private airportService: AirportService,
     private router: Router,
   ) {}
 
@@ -23,6 +27,15 @@ export class FlightListComponent {
       },
       error: (error) => {
         console.log('Error while loading flight', error);
+      },
+    });
+
+    this.airportService.getAirports().subscribe({
+      next: (res) => {
+        this.airports = res;
+      },
+      error: (error) => {
+        console.log('Error while loading airports', error);
       },
     });
   }

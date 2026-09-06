@@ -4,6 +4,7 @@
   <app-flight-card
     *ngFor="let flight of flights"
     [flight]="flight"
+    [airports]="airports"
     (viewDetails)="viewFlightDetails($event)"
   >
   </app-flight-card>

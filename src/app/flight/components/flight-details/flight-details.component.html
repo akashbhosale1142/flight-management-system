@@ -12,8 +12,10 @@
 
     <div class="details-grid">
       <div class="detail-item">
-        <span>Airline ID</span>
-        <strong>{{ flight.airline_id }}</strong>
+        <span>Airline</span>
+        <strong>
+          {{ airline?.airline_name }} ({{ airline?.airline_code }})
+        </strong>
       </div>
 
       <div class="detail-item">
