@@ -7,6 +7,8 @@ import { AirportService } from '../../services/airport.service';
 import { AirportModel } from '../../models/airport.model';
 import { AirlineModel } from '../../models/airline.model';
 import { AirlineService } from '../../services/airline.service';
+import { AircraftModel } from '../../models/aircraft';
+import { AircraftService } from '../../services/aircraft.service';
 
 @Component({
   selector: 'app-flight-details',
@@ -21,11 +23,14 @@ export class FlightDetailsComponent implements OnInit {
 
   airline?: AirlineModel;
 
+  aircraft?: AircraftModel;
+
   constructor(
     private route: ActivatedRoute,
     private flightService: FlightService,
     private airportService: AirportService,
     private airlineService: AirlineService,
+    private aircraftService: AircraftService,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +43,7 @@ export class FlightDetailsComponent implements OnInit {
         if (this.flight) {
           this.loadAirports();
           this.loadAirlines();
+          this.loadAircraft();
         }
       },
 
@@ -72,6 +78,18 @@ export class FlightDetailsComponent implements OnInit {
       },
       error: (error) => {
         console.log('Error while loading airline', error);
+      },
+    });
+  }
+  loadAircraft(): void {
+    this.aircraftService.getAircraft().subscribe({
+      next: (aircrafts) => {
+        this.aircraft = aircrafts.find((aircraft) => {
+          return aircraft.aircraft_id === this.flight?.aircraft_id;
+        });
+      },
+      error: (error) => {
+        console.log('Error while loading aircraft', error);
       },
     });
   }
