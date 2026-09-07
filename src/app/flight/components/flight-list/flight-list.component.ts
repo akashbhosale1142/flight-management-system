@@ -13,6 +13,11 @@ import { AirportService } from '../../services/airport.service';
 export class FlightListComponent {
   flights: FlightModel[] = [];
   airports: AirportModel[] = [];
+  filteredFlights: FlightModel[] = [];
+
+  fromAirportId: number | null = null;
+  toAirportId: number | null = null;
+  searchDate = '';
 
   constructor(
     private flightService: FlightService,
@@ -24,6 +29,7 @@ export class FlightListComponent {
     this.flightService.getFlights().subscribe({
       next: (res) => {
         this.flights = res;
+        this.filteredFlights = res;
       },
       error: (error) => {
         console.log('Error while loading flight', error);
@@ -37,6 +43,23 @@ export class FlightListComponent {
       error: (error) => {
         console.log('Error while loading airports', error);
       },
+    });
+  }
+
+  searchFlights(): void {
+    this.filteredFlights = this.flights.filter((flight) => {
+      const matchesFrom =
+        this.fromAirportId === null ||
+        flight.departure_airport_id === this.fromAirportId;
+
+      const matchesTo =
+        this.toAirportId === null ||
+        flight.arrival_airport_id === this.toAirportId;
+
+      const matchesDate =
+        !this.searchDate || flight.departure_time.startsWith(this.searchDate);
+
+      return matchesFrom && matchesTo && matchesDate;
     });
   }
 

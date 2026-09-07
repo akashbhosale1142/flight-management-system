@@ -4,6 +4,7 @@ import { FlightListComponent } from './components/flight-list/flight-list.compon
 import { FlightCardComponent } from './components/flight-card/flight-card.component';
 import { FlightDetailsComponent } from './components/flight-details/flight-details.component';
 import { FlightRoutingModule } from './flight-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { FlightRoutingModule } from './flight-routing.module';
     FlightCardComponent,
     FlightDetailsComponent,
   ],
-  imports: [CommonModule, FlightRoutingModule],
+  imports: [CommonModule, FlightRoutingModule, FormsModule],
   exports: [FlightListComponent],
 })
 export class FlightModule {}

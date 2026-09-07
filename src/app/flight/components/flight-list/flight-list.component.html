@@ -1,8 +1,42 @@
+<div class="search-container">
+  <div class="search-field">
+    <label for="from">From</label>
+
+    <select id="from" [(ngModel)]="fromAirportId">
+      <option [ngValue]="null">Select departure airport</option>
+
+      <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">
+        {{ airport.city }} ({{ airport.airport_code }})
+      </option>
+    </select>
+  </div>
+
+  <div class="search-field">
+    <label for="to">To</label>
+
+    <select id="to" [(ngModel)]="toAirportId">
+      <option [ngValue]="null">Select arrival airport</option>
+
+      <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">
+        {{ airport.city }} ({{ airport.airport_code }})
+      </option>
+    </select>
+  </div>
+
+  <div class="search-field">
+    <label for="date">Date</label>
+
+    <input id="date" type="date" [(ngModel)]="searchDate" />
+  </div>
+
+  <button class="search-btn" (click)="searchFlights()">Search</button>
+</div>
+
 <h2>Flight List</h2>
 
 <div class="flight-list">
   <app-flight-card
-    *ngFor="let flight of flights"
+    *ngFor="let flight of filteredFlights"
     [flight]="flight"
     [airports]="airports"
     (viewDetails)="viewFlightDetails($event)"
