@@ -5,12 +5,14 @@ import { FlightCardComponent } from './components/flight-card/flight-card.compon
 import { FlightDetailsComponent } from './components/flight-details/flight-details.component';
 import { FlightRoutingModule } from './flight-routing.module';
 import { FormsModule } from '@angular/forms';
+import { BookingComponent } from './components/booking/booking.component';
 
 @NgModule({
   declarations: [
     FlightListComponent,
     FlightCardComponent,
     FlightDetailsComponent,
+    BookingComponent,
   ],
   imports: [CommonModule, FlightRoutingModule, FormsModule],
   exports: [FlightListComponent],

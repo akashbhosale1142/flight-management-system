@@ -54,5 +54,11 @@
       <span>Base Price</span>
       <strong>₹{{ flight.base_price }}</strong>
     </div>
+    <button
+      class="book-btn"
+      [routerLink]="['/flights', flight.flight_id, 'book']"
+    >
+      Book Flight
+    </button>
   </div>
 </div>

@@ -1,0 +1,37 @@
+<div class="booking-container" *ngIf="flight">
+  <div class="booking-card">
+    <h2>Book Flight</h2>
+
+    <div class="flight-info">
+      <span>Flight Number</span>
+      <strong>{{ flight.flight_number }}</strong>
+    </div>
+
+    <div class="flight-info">
+      <span>Departure Time</span>
+      <strong>{{ flight.departure_time }}</strong>
+    </div>
+
+    <div class="flight-info">
+      <span>Arrival Time</span>
+      <strong>{{ flight.arrival_time }}</strong>
+    </div>
+
+    <div class="flight-info">
+      <span>Booking Date</span>
+      <strong>{{ bookingDate }}</strong>
+    </div>
+
+    <div class="flight-info">
+      <span>Total Amount</span>
+      <strong>₹{{ flight.base_price }}</strong>
+    </div>
+
+    <div class="flight-info">
+      <span>Booking Status</span>
+      <strong>{{ bookingStatus }}</strong>
+    </div>
+
+    <button class="book-btn" (click)="confirmBooking()">Confirm Booking</button>
+  </div>
+</div>
