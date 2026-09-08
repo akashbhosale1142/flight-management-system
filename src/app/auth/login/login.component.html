@@ -15,7 +15,7 @@
           #email="ngModel"
           placeholder="Enter your email"
           required
-          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          pattern="[A-Za-z0-9.]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
           email
         />
         <div *ngIf="email.invalid && email.touched">
