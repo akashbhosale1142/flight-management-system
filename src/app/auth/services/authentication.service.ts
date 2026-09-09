@@ -7,6 +7,7 @@ import { environment } from 'src/app/environments/environment';
 import { RegistrationModel } from '../models/registration.model';
 import { LoginResponseModel } from '../models/login-response';
 import { RegistrationResponseModel } from '../models/registration-response';
+import { RegistrationRequestModel } from '../models/registration-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,7 @@ export class AuthenticationService {
   }
 
   register(
-    registrationData: RegistrationModel,
+    registrationData: RegistrationRequestModel,
   ): Observable<RegistrationResponseModel> {
     return this.http.post<RegistrationResponseModel>(
       `${this.Url}/register`,

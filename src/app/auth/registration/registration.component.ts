@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { RegistrationModel } from '../models/registration.model';
+import { RegistrationRequestModel } from '../models/registration-request.model';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -18,6 +20,12 @@ export class RegistrationComponent {
       return false;
     }
 
+    if (
+      this.registrationData.password !== this.registrationData.confirmPassword
+    ) {
+      return false;
+    }
+
     return true;
   }
 
@@ -25,9 +33,17 @@ export class RegistrationComponent {
     if (!this.validateForm(registrationForm)) {
       return;
     }
-    this.authenticationService.register(this.registrationData).subscribe({
+
+    const registrationRequest: RegistrationRequestModel = {
+      userName: this.registrationData.userName,
+      email: this.registrationData.email,
+      password: this.registrationData.password,
+      phone: this.registrationData.phone,
+    };
+
+    this.authenticationService.register(registrationRequest).subscribe({
       next: (response) => {
-        console.log('registration successful', response);
+        console.log('Registration successful', response);
       },
       error: (error) => {
         console.log('Registration failed', error);

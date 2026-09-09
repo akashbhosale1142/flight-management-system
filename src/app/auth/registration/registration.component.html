@@ -1,26 +1,32 @@
 <div class="registration-container">
   <div class="registration-card">
     <h2>Flight Management System</h2>
-    <h3>registration</h3>
+    <h3>Registration</h3>
+
     <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
       <div class="form-input">
         <label for="fullName">Full Name</label>
+
         <input
           type="text"
           id="fullName"
-          name="fullName"
+          name="userName"
           placeholder="Enter the full name"
-          [(ngModel)]="registrationData.fullName"
-          #fullName="ngModel"
-          ngModel
+          [(ngModel)]="registrationData.userName"
+          #userName="ngModel"
           required
         />
-        <div *ngIf="fullName.touched && fullName.invalid">
-          <small *ngIf="fullName.errors?.['required']">Name is required</small>
+
+        <div *ngIf="userName.touched && userName.invalid">
+          <small *ngIf="userName.errors?.['required']">
+            Name is required
+          </small>
         </div>
       </div>
+
       <div class="form-input">
         <label for="email">Email</label>
+
         <input
           type="email"
           name="email"
@@ -28,20 +34,22 @@
           placeholder="Enter your email"
           [(ngModel)]="registrationData.email"
           #email="ngModel"
-          ngModel
           required
-          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-          email
+          pattern="[A-Za-z0-9.]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
         />
+
         <div *ngIf="email.invalid && email.touched">
-          <small *ngIf="email.errors?.['required']">Email is required</small>
-          <small *ngIf="email.errors?.['email'] || email.errors?.['pattern']"
-            >please enter a valid email</small
-          >
+          <small *ngIf="email.errors?.['required']"> Email is required </small>
+
+          <small *ngIf="email.errors?.['email'] || email.errors?.['pattern']">
+            Please enter a valid email
+          </small>
         </div>
       </div>
+
       <div class="form-input">
         <label for="phone">Phone Number</label>
+
         <input
           type="tel"
           name="phone"
@@ -49,21 +57,24 @@
           placeholder="Enter your phone number"
           [(ngModel)]="registrationData.phone"
           #phone="ngModel"
-          ngModel
           pattern="[0-9]{10}"
           required
         />
+
         <div *ngIf="phone.invalid && phone.touched">
           <small *ngIf="phone.errors?.['required']">
-            Phone number is required</small
-          >
-          <small *ngIf="phone.errors?.['pattern']"
-            >Phone number must contain exactly 10 digit</small
-          >
+            Phone number is required
+          </small>
+
+          <small *ngIf="phone.errors?.['pattern']">
+            Phone number must contain exactly 10 digits
+          </small>
         </div>
       </div>
+
       <div class="form-input">
         <label for="password">Password</label>
+
         <input
           type="password"
           name="password"
@@ -71,42 +82,64 @@
           placeholder="Enter your password"
           [(ngModel)]="registrationData.password"
           #password="ngModel"
-          ngModel
           minlength="6"
           required
         />
+
         <div *ngIf="password.invalid && password.touched">
           <small *ngIf="password.errors?.['required']">
             Password is required.
           </small>
+
           <small *ngIf="password.errors?.['minlength']">
             Password must be at least 6 characters.
           </small>
         </div>
       </div>
+
       <div class="form-input">
-        <label for="confirmPassword">Password</label>
+        <label for="confirmPassword">Confirm Password</label>
+
         <input
           type="password"
           name="confirmPassword"
           id="confirmPassword"
           placeholder="Confirm your password"
           [(ngModel)]="registrationData.confirmPassword"
-          #conformPassword="ngModel"
-          ngModel
+          #confirmPassword="ngModel"
           required
         />
-        <span
-          *ngIf="registrationData.password !== registrationData.confirmPassword"
-        >
-          <small>Passwords do not match</small>
-        </span>
+
+        <div *ngIf="confirmPassword.touched">
+          <small
+            *ngIf="
+              confirmPassword.invalid ||
+              registrationData.password !== registrationData.confirmPassword
+            "
+          >
+            <span *ngIf="confirmPassword.errors?.['required']">
+              Confirm password is required
+            </span>
+
+            <span
+              *ngIf="
+                !confirmPassword.errors?.['required'] &&
+                registrationData.password !== registrationData.confirmPassword
+              "
+            >
+              Passwords do not match
+            </span>
+          </small>
+        </div>
       </div>
+
       <button type="submit" [disabled]="registrationForm.invalid">
         Register
       </button>
     </form>
+
     <br />
+
     <a routerLink="/login"> Already have an account? Login </a>
   </div>
 </div>
